@@ -215,13 +215,3 @@ VALUES ((SELECT employees_uid from employees ORDER BY "stamp" DESC LIMIT 1), ( S
 
 COMMIT TRANSACTION;
 
-
-
-SELECT employees.employees_uid, employees.first_name, employees.address_uid, employees.last_name, employees.company_email, employees.birth_date, employees.hire_date, employees.role,
-address.address_uid, address.street, address.city, address.region, address.postal, address.country,
-skill.skill_uid, skill.field_uid, skill.experience, field.field_uid, field.name, field.type 
-FROM employees
-LEFT JOIN address ON employees.address_uid = address.address_uid
-LEFT JOIN skill ON employees_uid = skill.skill_uid
-LEFT JOIN field ON skill.field_uid = field.field_uid
-WHERE employees.employees_uid = 'e7e2e7f9-c9a1-4626-bd4e-b365c00bf453';
